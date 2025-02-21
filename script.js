@@ -37,8 +37,27 @@ clearButton.addEventListener("click", function () {
 deleteButton.addEventListener("click",function(){
   if(inputTag.value.trim()!==""){
     orderList.innerHTML=`<h1>Do you Want To delete<h2/>`
-  const deleteValue=myArr.indexOf(inputTag.value)
-  myArr.splice(deleteValue,1)
+   const div=document.createElement("div")
+   display.appendChild(div)
+   const button1=document.createElement("button")
+   const button2=document.createElement("button")
+   button1.textContent="Yes"
+   button2.textContent="No"
+   div.appendChild(button1)
+   div.appendChild(button2)
+   button2.addEventListener("click",()=>{
+       orderList.innerHTML = ""
+           div.innerHTML=""
+   })
+   button1.addEventListener("click",()=>{
+    const deleteValue=myArr.indexOf(inputTag.value)
+    myArr.splice(deleteValue,1)
+    orderList.innerHTML = "Your Selected Value Has Been Removed";
+    div.innerHTML=""
+    setTimeout(function(){
+        orderList.innerHTML = ""
+    },2000)
+   })
   inputTag.value = "";
 }})
 
