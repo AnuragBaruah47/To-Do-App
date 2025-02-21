@@ -73,17 +73,29 @@ addEventListener("DOMContentLoaded", () => {
 
   listButton.addEventListener("click", function () {
     orderList.innerHTML = "";
-    const input = document.createElement("input");
-    input.value = "checkbox";
     const item = localStorage.getItem("1");
     const arrayitem = JSON.parse(item);
+    console.log(arrayitem.length);
     if (arrayitem.length >= 1) {
       for (const values of arrayitem) {
+        const input=document.createElement("input")
+        const div=document.createElement("div")
+        input.className="checkbox"
+        input.type="checkbox" 
         let myArrValues = values;
         const li = document.createElement("li");
-        li.appendChild(input);
-        li.textContent = `${myArrValues}`;
-        orderList.appendChild(li);
+        orderList.appendChild(div)
+        div.appendChild(li);
+        li.appendChild(input) 
+        li.className="displayli"
+        li.appendChild(document.createTextNode(` ${myArrValues}`));
+        input.addEventListener("change",()=>{
+          if(input.checked===true) {
+            li.style.textDecoration = "line-through";
+          }else{
+            li.style.textDecoration = "none";
+          }
+        })
       }
     }
   });
