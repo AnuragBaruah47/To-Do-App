@@ -17,24 +17,26 @@ body{
 .display {
   margin-top: 10px;
   height: 80vh;
-  width: 40vw;
+  width: 50vw;
   border: 6px solid rgba(0, 0, 0, 0.284);
   overflow-y: auto;
   display: flex;
+  justify-content: space-between;
+  position: relative;
 }
 .ultimatediv{
-  border: 2px solid rgb(239, 0, 151);
-  margin-top: 53px;
+  top: 51px;
+  position: absolute;
   height: 70vh;
-  width: 40vw;
+  width: 50vw;
 }
 .smalldiv{
   text-align: center;
   display: flex;
-  width: 40vw;
+  width: 50vw;
   height: 10vh;
-  border: 2px solid green;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .displayli{
@@ -109,14 +111,41 @@ body{
   background-color: aqua;
   color: black;
 }
-
+.messagecontainer{
+  display: flex;
+  margin-top: 10px;
+  text-align: center;
+}
 .headmessage{
+  margin-right: 170px;
   color: rgb(255, 255, 255);
   font-size: 25px;
 }
-.messagecontainer{
-  text-align: center;
-  margin-top: 10px;
-  height: 4vh;
-  width: 40vw;
+.button1,.button2{
+  width: 7vw;
+  height: 5vh;
+  border: 1px solid rgb(30, 250, 1);
+  border-radius: 9px;
+  background-color: rgb(0, 0, 0);
+  color: rgb(242, 255, 240);
+}
+.button1{
+  background-color: aqua;
+  color: black;
+}
+.button2{
+  background-color: aqua;
+  color: black;
+}
+.BulkDiv{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 60px;
+  right: 275px;
+}
+.yesnodiv{
+  position: absolute;
+  top: 110px;
+  left: 300px;
 }
