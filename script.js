@@ -7,9 +7,14 @@ const clearButton = document.querySelector(".clear");
 const bulkDeleteButton = document.querySelector(".deleteall");
 const display = document.querySelector(".display");
 const orderList = document.querySelector(".ol");
-const toggleButton = document.querySelector(".theme-checkbox");
+const ultimatediv=document.querySelector("ultimatediv")
 let myArr = [];
 let myArrValues = 0;
+let realTime;
+const div=document.createElement("div")
+div.className="messagecontainer"
+const h3 = document.createElement("h3");
+h3.className="headmessage"
 
 addEventListener("DOMContentLoaded", () => {
   inputTag.addEventListener("input", function () {});
@@ -19,9 +24,12 @@ addEventListener("DOMContentLoaded", () => {
       myArr.push(inputValue);
       const localArray = JSON.stringify(myArr);
       localStorage.setItem("1", localArray);
-      const h3 = document.createElement("h3");
-      h3.textContent = `Task Added "${inputTag.value}"`;
-      display.appendChild(h3);
+      h3.textContent=`Your Task Has Been Added`
+      display.appendChild(div);
+      div.appendChild(h3)
+      let currTime= new Date
+       realTime=currTime.toLocaleTimeString()
+      // console.log(realTime);
       inputTag.value = "";
       // console.log(myArr);
       setTimeout(function () {
@@ -38,7 +46,7 @@ addEventListener("DOMContentLoaded", () => {
 
   deleteButton.addEventListener("click", function () {
     let inputValue = inputTag.value;
-    console.log(inputValue);
+    // console.log(inputValue);
 
     if (inputTag.value.trim() !== "") {
       orderList.innerHTML = `<h1>Do you Want To delete<h2/>`;
@@ -74,27 +82,34 @@ addEventListener("DOMContentLoaded", () => {
   listButton.addEventListener("click", function () {
     orderList.innerHTML = "";
     const item = localStorage.getItem("1");
+    const ultimatediv=document.createElement("div")
+    ultimatediv.className="ultimatediv"
     const arrayitem = JSON.parse(item);
-    console.log(arrayitem.length);
+    // console.log(arrayitem.length);
     if (arrayitem.length >= 1) {
       for (const values of arrayitem) {
         const input=document.createElement("input")
         const div=document.createElement("div")
+        const li = document.createElement("li");
+        li.className="displayli"
+        div.className="smalldiv"
         input.className="checkbox"
         input.type="checkbox" 
+        // const span=document.createElement("span")
         let myArrValues = values;
-        const li = document.createElement("li");
-        orderList.appendChild(div)
+        orderList.appendChild(ultimatediv)
+        ultimatediv.appendChild(div)
         div.appendChild(li);
-        li.appendChild(input) 
-        li.className="displayli"
+        li.appendChild(input)
+        // span.textContent=`${realTime}`
         li.appendChild(document.createTextNode(` ${myArrValues}`));
+        // li.appendChild(span)
         input.addEventListener("change",()=>{
           if(input.checked===true) {
             li.style.textDecoration = "line-through";
           }else{
             li.style.textDecoration = "none";
-          }
+          } 
         })
       }
     }
